@@ -1,4 +1,7 @@
 // https://leetcode.com/problems/random-point-in-non-overlapping-rectangles/
+
+import java.util.Random;
+
 class Solution {
     int[][] rects;
     int[] prefixSum;
