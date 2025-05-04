@@ -16,7 +16,7 @@ import java.util.Scanner;
 @author amanjain
 **/public class Main {
     public static void main(String[] args){
-        StudentDAO studentDAO = new StudentDAO();
+        StudentService service = new StudentService();
         Scanner sc = new Scanner(System.in);
         int choice;
 
@@ -38,10 +38,10 @@ import java.util.Scanner;
                     sc.nextLine();
                     System.out.println("Enter name: ");
                     String nameAdd = sc.nextLine();
-                    studentDAO.insertStudent(new Student(rollAdd, nameAdd));
+                    service.addStudent(new Student(rollAdd, nameAdd));
                     break;
                 case 2:
-                    List<Student> students = studentDAO.readAllStudents();
+                    List<Student> students = service.getAllStudents();
                     if (students.isEmpty()) {
                         System.out.println("No students found.");
                     } else {
@@ -57,12 +57,12 @@ import java.util.Scanner;
                     sc.nextLine();
                     System.out.print("Enter new name: ");
                     String newName = sc.nextLine();
-                    studentDAO.updateStudent(new Student(rollUpdate, newName));
+                    service.updateStudentName(rollUpdate, newName);
                     break;
                 case 4:
                     System.out.print("Enter roll number to delete: ");
                     int rollDelete = sc.nextInt();
-                    studentDAO.deleteStudent(rollDelete);
+                    service.deleteStudent(rollDelete);
                     break;
                 case 5:
                     System.out.println("Exiting. Thank you!");

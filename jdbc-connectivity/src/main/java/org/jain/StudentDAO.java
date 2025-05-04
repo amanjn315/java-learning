@@ -21,7 +21,7 @@ public class StudentDAO {
     private static final String user = "amanjain";
     private static final String password = "amanjain";
 
-    public void insertStudent(Student student){
+    public void addStudent(Student student){
         String sql = "INSERT INTO students (roll, name) VALUES (?, ?)";
 
         try (Connection conn = DriverManager.getConnection(url, user, password);
@@ -37,7 +37,7 @@ public class StudentDAO {
         }
     }
 
-    public List<Student> readAllStudents(){
+    public List<Student> getAllStudents(){
         List<Student> students = new ArrayList<>();
         String sql = "SELECT * FROM students";
 
@@ -54,7 +54,7 @@ public class StudentDAO {
         return students;
     }
 
-    public void updateStudent(Student student) {
+    public void updateStudentName(Student student) {
         String sql = "UPDATE students SET name = ? WHERE roll = ?";
 
         try (Connection conn = DriverManager.getConnection(url, user, password);
