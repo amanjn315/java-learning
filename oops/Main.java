@@ -1,8 +1,12 @@
 import pkg.Student;
+import vehicle_system.Electric;
+import vehicle_system.ElectricCar;
 
 public class Main {
     public static void main(String[] args){
-        Student s = new Student("Aman", 101);
-        s.introduce();
+        ElectricCar tesla = new ElectricCar("Tesla Model 3");
+        tesla.start();
+        tesla.fuelType();
+        tesla.chargeBattery();
     }
 }
