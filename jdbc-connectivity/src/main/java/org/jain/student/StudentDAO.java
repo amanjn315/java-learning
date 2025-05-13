@@ -7,7 +7,7 @@
  * You should have received a copy of the GNU General Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.jain;
+package org.jain.student;
 
 import java.sql.*;
 import java.util.ArrayList;

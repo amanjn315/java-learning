@@ -7,15 +7,23 @@
  * You should have received a copy of the GNU General Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.jain;
+package org.jain.student;
 
+import org.jain.config.ConfigManager;
+
+import java.util.logging.Logger;
 import java.util.List;
 import java.util.Scanner;
 
 /**
 @author amanjain
 **/public class Main {
+
+    private static final Logger logger = Logger.getLogger(Main.class.getName());
+
     public static void main(String[] args){
+        logger.info("Application started.");
+
         StudentService service = new StudentService();
         Scanner sc = new Scanner(System.in);
         int choice;
@@ -27,6 +35,8 @@ import java.util.Scanner;
             System.out.println("3. Update Student Name");
             System.out.println("4. Delete Student");
             System.out.println("5. Exit");
+            System.out.println("6. Export All Students to File");
+            System.out.println("7. Import Students from File");
             System.out.print("Enter your choice (1-5): ");
             choice = sc.nextInt();
             sc.nextLine();
@@ -67,11 +77,28 @@ import java.util.Scanner;
                 case 5:
                     System.out.println("Exiting. Thank you!");
                     break;
+                case 6:
+                    System.out.println("Enter file path to export (e.g, students.txt): ");
+                    String filePath = sc.nextLine();
+                    service.exportStudentsToFile(filePath);
+                    break;
+                case 7:
+                    System.out.println("Enter file path to import: ");
+                    String importPath = sc.nextLine();
+                    service.importStudentFromFile(importPath);
+                    break;
                 default:
                     System.out.println("Invalid choice. Try again.");
             }
         } while (choice != 5);
 
         sc.close();
+
+        ConfigManager a = ConfigManager.getInstance();
+        ConfigManager b = ConfigManager.getInstance();
+
+        a.printConfig();
+
+        System.out.println("Same object? " + (a == b));
     }
 }

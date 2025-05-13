@@ -7,38 +7,31 @@
  * You should have received a copy of the GNU General Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.jain;
+package org.jain.config;
 
 /**
  * @author amanjain
  **/
-public class Student {
-    private int roll;
-    private String name;
+public class ConfigManager {
+    //volatile ensures visibility across threads
+    private static volatile ConfigManager instance;
 
-    public Student(int roll, String name) {
-        this.roll = roll;
-        this.name = name;
+    private ConfigManager() {
+        System.out.println("Loading configuration...");
     }
 
-    public int getRoll() {
-        return roll;
+    public static ConfigManager getInstance() {
+        if(instance == null){
+            synchronized (ConfigManager.class) {
+                if(instance == null){
+                    instance = new ConfigManager();
+                }
+            }
+        }
+        return instance;
     }
 
-    public void setRoll(int roll) {
-        this.roll = roll;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "Roll :" + roll + ", Name: " + name;
+    public void printConfig(){
+        System.out.println("DB_URL = jdbc:postgresql://localhost:5432/mydb");
     }
 }
