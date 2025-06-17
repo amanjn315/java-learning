@@ -3,7 +3,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-class Solution {
+class SolutionA {
     List<List<Integer>> ans = new ArrayList<>();
     public void solve(int[][] graph, int node, List<Integer> path){
         int n = graph.length;

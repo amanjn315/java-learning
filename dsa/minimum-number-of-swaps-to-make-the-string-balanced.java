@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/minimum-number-of-swaps-to-make-the-string-balanced/description/
-class Solution {
+class SolutionB {
     public int minSwaps(String s) {
         int n = s.length();
         int i = 0, j = n - 1;
